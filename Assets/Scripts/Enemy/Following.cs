@@ -9,6 +9,7 @@
     {
         if (player != null )
         {
+            //considers the player as an agent and follows it.
             agent.SetDestination(player.transform.position);
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class Controller_Enemy : MonoBehaviour
 {
+    //needed to make the enemy behaviour work.
     public static int numPatroler;
     internal GameObject player;
     internal NavMeshAgent agent;
@@ -21,7 +22,7 @@ public class Controller_Enemy : MonoBehaviour
         Restart._Restart.OnRestart += Reset;
         destination = new Vector3(UnityEngine.Random.Range(-10, 12), 1, UnityEngine.Random.Range(-12, 9));
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player"); //i want the enemy to chase the player
     }
 
     public void Reset()
@@ -33,19 +34,22 @@ public class Controller_Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Projectile"))
         {
+            //the enemy destroys when a projectile hits it.
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
-            Controller_Hud.points++;
+            Controller_Hud.points++; //also add points for doing so
         }
         if (collision.gameObject.CompareTag("CannonBall"))
         {
+            //same as projectiles, but with the canonball
             Destroy(this.gameObject);
-            Controller_Hud.points++;
+            Controller_Hud.points++; //also add points for the kill
         }
         if (collision.gameObject.CompareTag("Bumeran"))
         {
+            //same with projectiles but with the boomerang.
             Destroy(this.gameObject);
-            Controller_Hud.points++;
+            Controller_Hud.points++; //also add points for the kill
         }
     }
 

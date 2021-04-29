@@ -25,6 +25,7 @@ public class Restart : MonoBehaviour
 
     private void GetInput()
     {
+        //the restar function actives with the R bottom
         if (Input.GetKeyDown(KeyCode.R))
         {
             OnRestarting();

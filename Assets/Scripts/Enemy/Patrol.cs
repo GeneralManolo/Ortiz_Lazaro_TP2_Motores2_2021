@@ -4,6 +4,7 @@ public class Patrol : Controller_Enemy
 {
     private void FixedUpdate()
     {
+        //makes the enemy look for the player
         Patroling();
     }
 
@@ -15,10 +16,12 @@ public class Patrol : Controller_Enemy
             var distance = heading.magnitude;
             if (distance < patrolDistance)
             {
+                //when the enemy founds the player, it will set it current destination to the enemy as well.
                 agent.SetDestination(player.transform.position);
             }
             else
             {
+                //if not, the enemy will still search for the player
                 PatrolBehaviour();
             }
         }
