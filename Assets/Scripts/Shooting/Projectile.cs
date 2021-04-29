@@ -2,6 +2,7 @@
 
 public class Projectile : MonoBehaviour
 {
+    //Allows me to make the bullet dessapear after a certain limit
     public float xLimit = 30;
     public float yLimit = 20;
 
@@ -17,6 +18,7 @@ public class Projectile : MonoBehaviour
 
     virtual public void Update()
     {
+        //i want to check the bullet limits all the time
         CheckLimits();
     }
 
@@ -24,6 +26,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("PowerUp"))
         {
+            //when the bullets touch a wall or a powerup, it destroys itself.
             Destroy(this.gameObject);
         }
     }
@@ -46,6 +49,7 @@ public class Projectile : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        //all of this IFs are conditions for the bullet to destroy itself.
     }
 
     private void OnDisable()
