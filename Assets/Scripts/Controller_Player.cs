@@ -14,6 +14,8 @@ public class Controller_Player : MonoBehaviour
     private bool started = false;
     public float speed = 5;
 
+    public SlowMotion slowMotionsetter;
+
     private void Start()
     {
         if (_Player == null)
@@ -46,6 +48,12 @@ public class Controller_Player : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.z = Input.GetAxis("Vertical");
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            slowMotionsetter.activateSlowMotion();
+        }
+
     }
 
     public virtual void FixedUpdate()
