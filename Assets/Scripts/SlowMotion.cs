@@ -6,9 +6,18 @@ public class SlowMotion : MonoBehaviour
     public float slowDownFactor = 0.05f; //how much is the slow down
     public float slowDownLegth = 3f;
 
-    void activateSlowMotion()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.U))
+        {
+
+            activateSlowMotion();
+
+        }
+    }
+
+    void activateSlowMotion()
+    {
         {
             Time.timeScale = slowDownFactor;
         }
