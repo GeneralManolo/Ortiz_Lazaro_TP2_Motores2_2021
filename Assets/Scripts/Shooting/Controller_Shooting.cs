@@ -12,8 +12,11 @@ public class Controller_Shooting : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject cannonPrefab;
     public GameObject bumeranPrefab;
+    public GameObject laserPrefab;
     public float bulletForce = 20f;
     private bool started = false;
+
+    private int TightNumber;
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class Controller_Shooting : MonoBehaviour
         {
             Destroy(this);
         }
+
+        TightNumber = 0;
     }
 
     private void Start()
@@ -41,6 +46,8 @@ public class Controller_Shooting : MonoBehaviour
         started = true;
         ammo = Ammo.Bumeran;
         ammunition = 1; //sets the boomeran ammo
+
+        TightNumber = 0;
     }
 
     private void OnEnable()
@@ -63,6 +70,31 @@ public class Controller_Shooting : MonoBehaviour
             Shoot(); //allows the bullet to actually be fired
             CheckAmmo(); //It keeps track of my bullets and subtracts them when I shoot.
         }
+
+         void GetInput()
+         {
+            if (Input.GetKeyDown("alpha1"))
+            {
+                TightNumber = 1;
+            }
+            if (Input.GetKeyDown("alpha2"))
+            {
+                TightNumber = 2;
+            }
+            if (Input.GetKeyDown("alpha3"))
+            {
+                TightNumber = 3;
+            }
+            if (Input.GetKeyDown("alpha4"))
+            {
+                TightNumber = 4;
+            }
+            if (Input.GetKeyDown("alpha5"))
+            {
+                TightNumber = 5;
+            }
+         }
+
     }
 
     private void CheckAmmo()
@@ -79,7 +111,9 @@ public class Controller_Shooting : MonoBehaviour
         if (OnShooting != null)
         {
             OnShooting();
+
         }
+
         if (ammo == Ammo.Normal)
         {
             //this selects the force and the gameobject that represents the normal ammo.
@@ -121,7 +155,44 @@ public class Controller_Shooting : MonoBehaviour
             rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
             ammunition--; //is limited
         }
+
+
+        switch (TightNumber)
+        {
+            case 1:
+
+                break;
+
+            case 2:
+
+                GameObject bullet = Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
+
+                break;
+
+            case 3:
+
+
+
+                break;
+
+            case 4:
+
+
+
+                break;
+
+            case 5:
+
+
+
+                break;
+        }
+
+
+
     }
+
+
 
     private void OnDisable()
     {
